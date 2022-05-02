@@ -4,15 +4,16 @@ const winners = [];
 function game() {
   // to play the game (five rounds)
   for (let i = 0; i <= 5; i++) {
-    playRound();
+    playRound(i);
   }
   logWins();
 }
-function playRound() {
+function playRound(round) {
   const playerSelection = playerChoice();
   const computerSelection = computeChoice();
   const winner = checkWinner(playerSelection, computerSelection);
   winners.push(winner);
+	logRound(playerSelection,computerSelection,winner,round);
 }
 
 function playerChoice() {
@@ -63,5 +64,12 @@ function logWins() {
   console.log("Player wins", playerWins);
   console.log("Computer wins", computerWins);
   console.log("Tie", ties);
+}
+function logRound(playerChoice, computeChoice, winner,round) {
+	console.log("Round", round)
+	console.log("Player Choice:", playerChoice);
+	console.log("Computer Choice:", computeChoice);
+	console.log(winner, "Won the Round");
+	console.log("............................");
 }
 game();
